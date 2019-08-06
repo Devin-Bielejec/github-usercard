@@ -3,7 +3,12 @@
            https://api.github.com/users/<your name>
 */
 axios.get("https://api.github.com/users/Devin-Bielejec")
-.then( response => console.log(response))
+.then( response => {
+  console.log(response.data);
+  const myCard = cardComponent(response.data);
+  console.log(myCard);
+  document.querySelector(".cards").appendChild(cardComponent(response.data));
+})
 .catch( err => err) 
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
@@ -57,14 +62,17 @@ function cardComponent(obj){
   img.src = obj["avatar_url"];
   divCard.appendChild(img);
 
-  const divCardInfo = document.createElement("div").classList.add("card-info");
+  const divCardInfo = document.createElement("div");
+  divCardInfo.classList.add("card-info");
   divCard.appendChild(divCardInfo);
 
-  const h3Name = document.createElement("h3").classList.add("name");
+  const h3Name = document.createElement("h3");
+  h3Name.classList.add("name")
   h3Name.textContent = obj.name;
   divCardInfo.appendChild(h3Name);
 
-  const pUserName = document.createElement("p").classList.add("username");
+  const pUserName = document.createElement("p");
+  pUserName.classList.add("username");
   pUserName.textContent = obj.login;
   divCardInfo.appendChild(pUserName);
 
@@ -91,6 +99,8 @@ function cardComponent(obj){
   const pBio = document.createElement("p");
   pBio.textContent = `Bio: ${obj.bio}`;
   divCardInfo.appendChild(pBio);
+
+  return divCard;
 }
 
 
