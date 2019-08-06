@@ -36,18 +36,20 @@ In this project we are going to be accessing the GitHub API and building a socia
   * None. We have gone ahead and taken care of this step for you. Focus on the Javascript 😁.
 
 ### Part 1: Requesting Data from the GitHub API
-* Include the script element linking the `axios` library in your HTML. If you do not remember the code you can find it here: https://github.com/axios/axios
+[X] Include the script element linking the `axios` library in your HTML. If you do not remember the code you can find it here: https://github.com/axios/axios
 ![Linking Axios Library](/images/linkingAxiosLibrary.JPG)
-* Follow the instructions found in the GitHubCard/index.js file to request data from the GitHub API.
+[X] Follow the instructions found in the GitHubCard/index.js file to request data from the GitHub API.
+![Requesting data](/images/gettingData.JPG)
 
 ### Part 2: Create the component function
 
-* Once you are receiving data from the GitHub API, take some time to study the data and the information it is giving you. You will create the HTML template you see in the GitHubCard/index.js file and plugging in the dynamic data you are getting from the GitHub API.
-* Once you complete the component, create a component based on your profile and add it to the DOM.
+[X] Once you are receiving data from the GitHub API, take some time to study the data and the information it is giving you. You will create the HTML template you see in the GitHubCard/index.js file and plugging in the dynamic data you are getting from the GitHub API.
+[X] Once you complete the component, create a component based on your profile and add it to the DOM.
 
 ### Part 3: Your Friends
 
-* After you have successfully added your own card to the DOM, we will get a list of your followers and programmatically add cards for them as well. Follow the instructions in GitHubCard/index.js. 
+[X] After you have successfully added your own card to the DOM, we will get a list of your followers and programmatically add cards for them as well. Follow the instructions in GitHubCard/index.js.
+![github Cards](/images/githubCards.JPG) 
 
 ### Stretch Goals:
 
