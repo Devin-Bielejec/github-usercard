@@ -4,7 +4,7 @@
 */
 axios.get("https://api.github.com/users/Devin-Bielejec")
 .then( response => console.log(response))
-.catch( err => console.log(err) )
+.catch( err => err) 
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -48,6 +48,37 @@ const followersArray = [];
 </div>
 
 */
+
+function cardComponent(obj){
+  const divCard = document.createElement("div");
+  divCard.classList.add("card");
+
+  const h3Name = document.createElement("h3").classList.add("name");
+  h3Name.textContent = obj.name;
+  divCard.appendChild(h3Name);
+
+  const pUserName = document.createElement("p").classList.add("username");
+  pUserName.textContent = obj.login;
+  divCard.appendChild(pUserName);
+
+  const pLocation = document.createElement("p");
+  pLocation.textContent = obj.location;
+  divCard.appendChild(pLocation);
+
+  const pProfile = document.createElement("p");
+  pProfile.textContent = "Profile:";
+  const aProfile = document.createElement("a");
+  aProfile.href = obj["html_url"];
+  aProfile.textContent = obj["html_url"];
+  pProfile.appendChild(aProfile);
+  divCard.appendChild(pProfile);
+
+  
+
+
+
+}
+
 
 /* List of LS Instructors Github username's: 
   tetondan
