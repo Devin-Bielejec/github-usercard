@@ -111,3 +111,13 @@ function cardComponent(obj){
   luishrd
   bigknell
 */
+
+const otherPeople = ["tetondan","dustinmyers","justsml", "luishrd","bigknell"];
+otherPeople.forEach( item => axios.get(`https://api.github.com/users/${item}`)
+.then( response => {
+  console.log(response.data);
+  const myCard = cardComponent(response.data);
+  console.log(myCard);
+  document.querySelector(".cards").appendChild(cardComponent(response.data));
+})
+.catch( err => err) )
