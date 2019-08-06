@@ -53,17 +53,24 @@ function cardComponent(obj){
   const divCard = document.createElement("div");
   divCard.classList.add("card");
 
+  const img = document.createElement("img");
+  img.src = obj["avatar_url"];
+  divCard.appendChild(img);
+
+  const divCardInfo = document.createElement("div").classList.add("card-info");
+  divCard.appendChild(divCardInfo);
+
   const h3Name = document.createElement("h3").classList.add("name");
   h3Name.textContent = obj.name;
-  divCard.appendChild(h3Name);
+  divCardInfo.appendChild(h3Name);
 
   const pUserName = document.createElement("p").classList.add("username");
   pUserName.textContent = obj.login;
-  divCard.appendChild(pUserName);
+  divCardInfo.appendChild(pUserName);
 
   const pLocation = document.createElement("p");
   pLocation.textContent = obj.location;
-  divCard.appendChild(pLocation);
+  divCardInfo.appendChild(pLocation);
 
   const pProfile = document.createElement("p");
   pProfile.textContent = "Profile:";
@@ -71,12 +78,19 @@ function cardComponent(obj){
   aProfile.href = obj["html_url"];
   aProfile.textContent = obj["html_url"];
   pProfile.appendChild(aProfile);
-  divCard.appendChild(pProfile);
+  divCardInfo.appendChild(pProfile);
 
-  
+  const pFollowers = document.createElement("p");
+  pFollowers.textContent = `Followers: ${obj.followers}`;
+  divCardInfo.appendChild(pFollowers);
 
+  const pFollowing = document.createElement("p");
+  pFollowing.textContent = `Following: ${obj.following}`;
+  divCardInfo.appendChild(pFollowing);
 
-
+  const pBio = document.createElement("p");
+  pBio.textContent = `Bio: ${obj.bio}`;
+  divCardInfo.appendChild(pBio);
 }
 
 
