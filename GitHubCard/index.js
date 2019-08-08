@@ -2,6 +2,14 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+axios.get("https://api.github.com/users/Devin-Bielejec")
+.then( response => {
+  console.log(response.data);
+  const myCard = cardComponent(response.data);
+  console.log(myCard);
+  document.querySelector(".cards").appendChild(cardComponent(response.data));
+})
+.catch( err => err) 
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -46,6 +54,56 @@ const followersArray = [];
 
 */
 
+function cardComponent(obj){
+  const divCard = document.createElement("div");
+  divCard.classList.add("card");
+
+  const img = document.createElement("img");
+  img.src = obj["avatar_url"];
+  divCard.appendChild(img);
+
+  const divCardInfo = document.createElement("div");
+  divCardInfo.classList.add("card-info");
+  divCard.appendChild(divCardInfo);
+
+  const h3Name = document.createElement("h3");
+  h3Name.classList.add("name")
+  h3Name.textContent = obj.name;
+  divCardInfo.appendChild(h3Name);
+
+  const pUserName = document.createElement("p");
+  pUserName.classList.add("username");
+  pUserName.textContent = obj.login;
+  divCardInfo.appendChild(pUserName);
+
+  const pLocation = document.createElement("p");
+  pLocation.textContent = obj.location;
+  divCardInfo.appendChild(pLocation);
+
+  const pProfile = document.createElement("p");
+  pProfile.textContent = "Profile:";
+  const aProfile = document.createElement("a");
+  aProfile.href = obj["html_url"];
+  aProfile.textContent = obj["html_url"];
+  pProfile.appendChild(aProfile);
+  divCardInfo.appendChild(pProfile);
+
+  const pFollowers = document.createElement("p");
+  pFollowers.textContent = `Followers: ${obj.followers}`;
+  divCardInfo.appendChild(pFollowers);
+
+  const pFollowing = document.createElement("p");
+  pFollowing.textContent = `Following: ${obj.following}`;
+  divCardInfo.appendChild(pFollowing);
+
+  const pBio = document.createElement("p");
+  pBio.textContent = `Bio: ${obj.bio}`;
+  divCardInfo.appendChild(pBio);
+
+  return divCard;
+}
+
+
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
@@ -53,3 +111,13 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+const otherPeople = ["tetondan","dustinmyers","justsml", "luishrd","bigknell"];
+otherPeople.forEach( item => axios.get(`https://api.github.com/users/${item}`)
+.then( response => {
+  console.log(response.data);
+  const myCard = cardComponent(response.data);
+  console.log(myCard);
+  document.querySelector(".cards").appendChild(cardComponent(response.data));
+})
+.catch( err => err) )
